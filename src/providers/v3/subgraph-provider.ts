@@ -59,6 +59,8 @@ const SUBGRAPH_URL_BY_CHAIN: { [chainId in ChainId]?: string } = {
     'https://api.thegraph.com/subgraphs/name/jesse-sawa/uniswap-celo',
   [ChainId.GÖRLI]:
     'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-gorli',
+  [ChainId.FUJI]:
+    'https://api.thegraph.com/subgraphs/name/orbital-apes-labs/v3-subgraph'
 };
 
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.
@@ -129,10 +131,9 @@ export class V3SubgraphProvider implements IV3SubgraphProvider {
     let pools: RawV3SubgraphPool[] = [];
 
     log.info(
-      `Getting V3 pools from the subgraph with page size ${PAGE_SIZE}${
-        providerConfig?.blockNumber
-          ? ` as of block ${providerConfig?.blockNumber}`
-          : ''
+      `Getting V3 pools from the subgraph with page size ${PAGE_SIZE}${providerConfig?.blockNumber
+        ? ` as of block ${providerConfig?.blockNumber}`
+        : ''
       }.`
     );
 

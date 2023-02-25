@@ -526,12 +526,26 @@ export const WBTC_MOONBEAM = new Token(
   'WBTC',
   'Wrapped BTC bridged using Multichain'
 );
+export const USDC_FUJI = new Token(
+  ChainId.FUJI,
+  '0xeC5bfc01218e1CA43027A987c185E94A67AeDB6D',
+  18,
+  'USDC',
+  'USDC'
+);
+export const WAVAX_FUJI = new Token(
+  ChainId.FUJI,
+  '0x1D308089a2D1Ced3f1Ce36B1FcaF815b07217be3',
+  18,
+  'WAVAX',
+  'Wrapped Avax'
+);
 
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
     protected multicall2Provider: IMulticallProvider
-  ) {}
+  ) { }
 
   public async getTokens(
     _addresses: string[],
@@ -601,10 +615,8 @@ export class TokenProvider implements ITokenProvider {
       }
 
       log.info(
-        `Got token symbol and decimals for ${
-          Object.values(addressToToken).length
-        } out of ${addresses.length} tokens on-chain ${
-          providerConfig ? `as of: ${providerConfig?.blockNumber}` : ''
+        `Got token symbol and decimals for ${Object.values(addressToToken).length
+        } out of ${addresses.length} tokens on-chain ${providerConfig ? `as of: ${providerConfig?.blockNumber}` : ''
         }`
       );
     }
@@ -715,6 +727,8 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_ETHEREUM_GNOSIS;
     case ChainId.MOONBEAM:
       return USDC_MOONBEAM;
+    case ChainId.FUJI:
+      return USDC_FUJI;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }

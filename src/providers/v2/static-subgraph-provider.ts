@@ -47,6 +47,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.CELO_ALFAJORES]: [],
   [ChainId.GNOSIS]: [],
   [ChainId.MOONBEAM]: [],
+  [ChainId.FUJI]: [],
 };
 
 /**
@@ -62,7 +63,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
  * @class StaticV2SubgraphProvider
  */
 export class StaticV2SubgraphProvider implements IV2SubgraphProvider {
-  constructor(private chainId: ChainId) {}
+  constructor(private chainId: ChainId) { }
 
   public async getPools(
     tokenIn?: Token,

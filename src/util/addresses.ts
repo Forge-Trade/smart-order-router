@@ -15,6 +15,11 @@ const ARBITRUM_GOERLI_QUOTER_ADDRESSES =
 const ARBITRUM_GOERLI_MULTICALL_ADDRESS =
   '0x8260CB40247290317a4c062F3542622367F206Ee';
 
+const FUJI_V3_CORE_FACTORY_ADDRESSES =
+  '0x43bDe47a34801f6aB2d66016Aef723Ba1b3A62b3';
+const FUJI_QUOTER_ADDRESSES = '0x92b5f5EAe221BC6FeD88259cd2805A9C842c29bF';
+const FUJI_MULTICALL_ADDRESS = '0xBeFe898407483f0f2fF605971FBD8Cf8FbD8B160';
+
 export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(FACTORY_ADDRESS),
   [ChainId.CELO]: CELO_V3_CORE_FACTORY_ADDRESSES,
@@ -22,6 +27,7 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
 
   [ChainId.ARBITRUM_GOERLI]: ARBITRUM_GOERLI_V3_CORE_FACTORY_ADDRESSES,
   // TODO: Gnosis + Moonbeam contracts to be deployed
+  [ChainId.FUJI]: FUJI_V3_CORE_FACTORY_ADDRESSES,
 };
 
 export const QUOTER_V2_ADDRESSES: AddressMap = {
@@ -31,6 +37,7 @@ export const QUOTER_V2_ADDRESSES: AddressMap = {
 
   [ChainId.ARBITRUM_GOERLI]: ARBITRUM_GOERLI_QUOTER_ADDRESSES,
   // TODO: Gnosis + Moonbeam contracts to be deployed
+  [ChainId.FUJI]: FUJI_QUOTER_ADDRESSES,
 };
 
 export const MIXED_ROUTE_QUOTER_V1_ADDRESSES: AddressMap = {
@@ -46,6 +53,7 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
   [ChainId.CELO_ALFAJORES]: CELO_MULTICALL_ADDRESS,
 
   [ChainId.ARBITRUM_GOERLI]: ARBITRUM_GOERLI_MULTICALL_ADDRESS,
+  [ChainId.FUJI]: FUJI_MULTICALL_ADDRESS,
   // TODO: Gnosis + Moonbeam contracts to be deployed
 };
 
@@ -86,6 +94,7 @@ export const WETH9: {
     | ChainId.CELO_ALFAJORES
     | ChainId.GNOSIS
     | ChainId.MOONBEAM
+    | ChainId.FUJI
   >]: Token;
 } = {
   [ChainId.MAINNET]: new Token(
