@@ -28,11 +28,13 @@ import {
   USDC_ARBITRUM_GOERLI,
   USDC_ARBITRUM_RINKEBY,
   USDC_ETHEREUM_GNOSIS,
+  USDC_FUJI,
   USDC_MAINNET,
   USDC_MOONBEAM,
   USDC_OPTIMISM,
   USDC_OPTIMISTIC_KOVAN,
   USDC_POLYGON,
+  USDC_TEVMOS,
   USDT_ARBITRUM,
   USDT_ARBITRUM_RINKEBY,
   USDT_MAINNET,
@@ -45,7 +47,6 @@ import {
   WBTC_OPTIMISTIC_KOVAN,
   WMATIC_POLYGON,
   WMATIC_POLYGON_MUMBAI,
-  USDC_FUJI,
 } from './token-provider';
 
 // These tokens will added to the Token cache on initialization.
@@ -134,6 +135,10 @@ export const CACHE_SEED_TOKENS: {
   [ChainId.FUJI]: {
     USDC: USDC_FUJI,
     WAVAX: WRAPPED_NATIVE_CURRENCY[ChainId.FUJI],
+  },
+  [ChainId.TEVMOS]: {
+    USDC: USDC_TEVMOS,
+    WEVMOS: WRAPPED_NATIVE_CURRENCY[ChainId.TEVMOS],
   },
 
   // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet

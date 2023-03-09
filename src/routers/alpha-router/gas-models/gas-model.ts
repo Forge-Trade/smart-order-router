@@ -27,6 +27,7 @@ import {
   USDC_OPTIMISTIC_KOVAN,
   USDC_POLYGON,
   USDC_ROPSTEN,
+  USDC_TEVMOS,
   USDT_ARBITRUM,
   USDT_ARBITRUM_RINKEBY,
   USDT_GÖRLI,
@@ -74,7 +75,8 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.CELO_ALFAJORES]: [CUSD_CELO_ALFAJORES],
   [ChainId.GNOSIS]: [USDC_ETHEREUM_GNOSIS],
   [ChainId.MOONBEAM]: [USDC_MOONBEAM],
-  [ChainId.FUJI]: [USDC_FUJI]
+  [ChainId.FUJI]: [USDC_FUJI],
+  [ChainId.TEVMOS]: [USDC_TEVMOS]
 };
 
 export type L1ToL2GasCosts = {

@@ -60,7 +60,9 @@ const SUBGRAPH_URL_BY_CHAIN: { [chainId in ChainId]?: string } = {
   [ChainId.GÖRLI]:
     'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-gorli',
   [ChainId.FUJI]:
-    'https://api.thegraph.com/subgraphs/name/orbital-apes-labs/v3-subgraph'
+    'https://api.thegraph.com/subgraphs/name/orbital-apes-labs/v3-subgraph',
+  [ChainId.TEVMOS]:
+    'https://dev.orbitmarket.io/subgraphs/name/orbital-apes-labs/v3-subgraph'
 };
 
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.

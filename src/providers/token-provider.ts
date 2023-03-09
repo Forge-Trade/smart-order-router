@@ -541,6 +541,21 @@ export const WAVAX_FUJI = new Token(
   'Wrapped Avax'
 );
 
+export const USDC_TEVMOS = new Token(
+  ChainId.TEVMOS,
+  '0xBf6942D20D1460334B9b147199c4f03c97b70d02',
+  6,
+  'USDC',
+  'USDC'
+);
+export const WAVAX_TEVMOS = new Token(
+  ChainId.TEVMOS,
+  '0xBeFe898407483f0f2fF605971FBD8Cf8FbD8B160',
+  18,
+  'WAVAX',
+  'Wrapped Avax'
+);
+
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
@@ -729,6 +744,8 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_MOONBEAM;
     case ChainId.FUJI:
       return USDC_FUJI;
+    case ChainId.TEVMOS:
+      return USDC_TEVMOS;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }

@@ -31,6 +31,7 @@ import {
   USDC_ARBITRUM,
   USDC_ARBITRUM_GOERLI,
   USDC_ETHEREUM_GNOSIS,
+  USDC_FUJI,
   USDC_GÖRLI,
   USDC_KOVAN,
   USDC_MAINNET,
@@ -40,7 +41,7 @@ import {
   USDC_POLYGON,
   USDC_RINKEBY,
   USDC_ROPSTEN,
-  USDC_FUJI,
+  USDC_TEVMOS,
   USDT_ARBITRUM,
   USDT_ARBITRUM_RINKEBY,
   USDT_GÖRLI,
@@ -62,7 +63,6 @@ import {
   WMATIC_POLYGON,
   WMATIC_POLYGON_MUMBAI,
   WXDAI_GNOSIS,
-
 } from '../token-provider';
 
 import { IV3PoolProvider } from './pool-provider';
@@ -166,6 +166,10 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.FUJI]: [
     WRAPPED_NATIVE_CURRENCY[ChainId.FUJI],
     USDC_FUJI,
+  ],
+  [ChainId.TEVMOS]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.TEVMOS],
+    USDC_TEVMOS,
   ],
 };
 
