@@ -25,6 +25,11 @@ const TEVMOS_V3_CORE_FACTORY_ADDRESSES =
 const TEVMOS_QUOTER_ADDRESSES = '0x0F70b839BDdC6E95113cA3A51dFfC0CEd73d55a5';
 const TEVMOS_MULTICALL_ADDRESS = '0x5E9848eBE701d519bcd18fDa07f9432E6fb63dff';
 
+const EVMOS_V3_CORE_FACTORY_ADDRESSES =
+  '0xf544365e7065966f190155F629cE0182fC68Eaa2';
+const EVMOS_QUOTER_ADDRESSES = '0xacDD67285fFeF73c9C6778019d2fF0A75547048a';
+const EVMOS_MULTICALL_ADDRESS = '0xcF30595B19B299664e8d2CedF41EC8FA859F97b1';
+
 export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(FACTORY_ADDRESS),
   [ChainId.CELO]: CELO_V3_CORE_FACTORY_ADDRESSES,
@@ -34,6 +39,7 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   // TODO: Gnosis + Moonbeam contracts to be deployed
   [ChainId.FUJI]: FUJI_V3_CORE_FACTORY_ADDRESSES,
   [ChainId.TEVMOS]: TEVMOS_V3_CORE_FACTORY_ADDRESSES,
+  [ChainId.EVMOS]: EVMOS_V3_CORE_FACTORY_ADDRESSES,
 };
 
 export const QUOTER_V2_ADDRESSES: AddressMap = {
@@ -45,6 +51,7 @@ export const QUOTER_V2_ADDRESSES: AddressMap = {
   // TODO: Gnosis + Moonbeam contracts to be deployed
   [ChainId.FUJI]: FUJI_QUOTER_ADDRESSES,
   [ChainId.TEVMOS]: TEVMOS_QUOTER_ADDRESSES,
+  [ChainId.EVMOS]: EVMOS_QUOTER_ADDRESSES,
 };
 
 export const MIXED_ROUTE_QUOTER_V1_ADDRESSES: AddressMap = {
@@ -62,6 +69,7 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
   [ChainId.ARBITRUM_GOERLI]: ARBITRUM_GOERLI_MULTICALL_ADDRESS,
   [ChainId.FUJI]: FUJI_MULTICALL_ADDRESS,
   [ChainId.TEVMOS]: TEVMOS_MULTICALL_ADDRESS,
+  [ChainId.EVMOS]: EVMOS_MULTICALL_ADDRESS,
   // TODO: Gnosis + Moonbeam contracts to be deployed
 };
 
@@ -104,6 +112,7 @@ export const WETH9: {
     | ChainId.MOONBEAM
     | ChainId.FUJI
     | ChainId.TEVMOS
+    | ChainId.EVMOS
   >]: Token;
 } = {
   [ChainId.MAINNET]: new Token(

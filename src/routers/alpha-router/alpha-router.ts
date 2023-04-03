@@ -460,6 +460,7 @@ export class AlphaRouter
           break;
         case ChainId.CELO:
         case ChainId.TEVMOS:
+        case ChainId.EVMOS:
         case ChainId.CELO_ALFAJORES:
           this.onChainQuoteProvider = new OnChainQuoteProvider(
             chainId,

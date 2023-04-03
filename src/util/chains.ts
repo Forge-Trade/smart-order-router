@@ -18,7 +18,8 @@ export enum ChainId {
   GNOSIS = 100,
   MOONBEAM = 1284,
   FUJI = 43113,
-  TEVMOS = 9000
+  TEVMOS = 9000,
+  EVMOS = 9001
 }
 
 // WIP: Gnosis, Moonbeam
@@ -39,6 +40,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.CELO,
   ChainId.FUJI,
   ChainId.TEVMOS,
+  ChainId.EVMOS,
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -110,6 +112,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.FUJI;
     case 9000:
       return ChainId.TEVMOS;
+    case 9001:
+      return ChainId.EVMOS;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -134,6 +138,7 @@ export enum ChainName {
   MOONBEAM = 'moonbeam-mainnet',
   FUJI = 'avalanche-fuji',
   TEVMOS = 'evmos-testnet',
+  EVMOS = 'evmos-maintnet',
 }
 
 export enum NativeCurrencyName {
@@ -145,6 +150,7 @@ export enum NativeCurrencyName {
   MOONBEAM = 'GLMR',
   FUJI = "AVAX",
   TEVMOS = "TEVMOS",
+  EVMOS = "EVMOS",
 }
 export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.MAINNET]: [
@@ -208,6 +214,7 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.MOONBEAM]: ['GLMR'],
   [ChainId.FUJI]: ['AVAX'],
   [ChainId.TEVMOS]: ['TEVMOS'],
+  [ChainId.EVMOS]: ['EVMOS'],
 
 };
 
@@ -230,6 +237,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.MOONBEAM]: NativeCurrencyName.MOONBEAM,
   [ChainId.FUJI]: NativeCurrencyName.FUJI,
   [ChainId.TEVMOS]: NativeCurrencyName.TEVMOS,
+  [ChainId.EVMOS]: NativeCurrencyName.EVMOS,
 };
 
 export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
@@ -270,6 +278,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.FUJI;
     case 9000:
       return ChainName.TEVMOS;
+    case 9001:
+      return ChainName.EVMOS;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -313,6 +323,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_FUJI!;
     case ChainId.TEVMOS:
       return process.env.JSON_RPC_PROVIDER_TEVMOS!;
+    case ChainId.EVMOS:
+      return process.env.JSON_RPC_PROVIDER_EVMOS!;
     default:
       throw new Error(`Chain id: ${id} not supported`);
   }
@@ -447,6 +459,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     'WEVMOS',
     'Wrapped TEVMOS'
   ),
+  [ChainId.EVMOS]: new Token(
+    ChainId.EVMOS,
+    '0xd4949664cd82660aae99bedc034a0dea8a0bd517',
+    18,
+    'WEVMOS',
+    'Wrapped EVMOS'
+  ),
 };
 
 function isMatic(
@@ -549,7 +568,7 @@ class MoonbeamNativeCurrency extends NativeCurrency {
   }
 }
 
-function isTevmos(chainId: number): chainId is ChainId.MOONBEAM {
+function isTevmos(chainId: number): chainId is ChainId.TEVMOS {
   return chainId === ChainId.TEVMOS;
 }
 
@@ -568,8 +587,32 @@ class TevmosNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isMoonbeam(chainId)) throw new Error('Not moonbeam');
+    if (!isTevmos(chainId)) throw new Error('Not tevmos');
     super(chainId, 18, 'TEVMOS', 'Test Evmos');
+  }
+}
+
+function isEvmos(chainId: number): chainId is ChainId.EVMOS {
+  return chainId === ChainId.EVMOS;
+}
+
+class EvmosNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId;
+  }
+
+  get wrapped(): Token {
+    if (!isEvmos(this.chainId)) throw new Error('Not evmos');
+    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
+    if (nativeCurrency) {
+      return nativeCurrency;
+    }
+    throw new Error(`Does not support this chain ${this.chainId}`);
+  }
+
+  public constructor(chainId: number) {
+    if (!isEvmos(chainId)) throw new Error('Not evmos');
+    super(chainId, 18, 'EVMOS', 'Evmos');
   }
 }
 
@@ -605,6 +648,8 @@ export function nativeOnChain(chainId: number): NativeCurrency {
     cachedNativeCurrency[chainId] = new MoonbeamNativeCurrency(chainId);
   else if (isTevmos(chainId))
     cachedNativeCurrency[chainId] = new TevmosNativeCurrency(chainId);
+  else if (isEvmos(chainId))
+    cachedNativeCurrency[chainId] = new EvmosNativeCurrency(chainId);
   else cachedNativeCurrency[chainId] = ExtendedEther.onChain(chainId);
 
   return cachedNativeCurrency[chainId]!;

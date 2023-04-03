@@ -49,6 +49,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.MOONBEAM]: [],
   [ChainId.FUJI]: [],
   [ChainId.TEVMOS]: [],
+  [ChainId.EVMOS]: [],
 };
 
 /**

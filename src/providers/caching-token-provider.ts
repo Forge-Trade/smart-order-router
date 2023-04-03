@@ -28,6 +28,7 @@ import {
   USDC_ARBITRUM_GOERLI,
   USDC_ARBITRUM_RINKEBY,
   USDC_ETHEREUM_GNOSIS,
+  USDC_EVMOS,
   USDC_FUJI,
   USDC_MAINNET,
   USDC_MOONBEAM,
@@ -139,6 +140,10 @@ export const CACHE_SEED_TOKENS: {
   [ChainId.TEVMOS]: {
     USDC: USDC_TEVMOS,
     WEVMOS: WRAPPED_NATIVE_CURRENCY[ChainId.TEVMOS],
+  },
+  [ChainId.EVMOS]: {
+    USDC: USDC_EVMOS,
+    WEVMOS: WRAPPED_NATIVE_CURRENCY[ChainId.EVMOS],
   },
 
   // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet
