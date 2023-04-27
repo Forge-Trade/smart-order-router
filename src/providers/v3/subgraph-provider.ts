@@ -64,7 +64,7 @@ const SUBGRAPH_URL_BY_CHAIN: { [chainId in ChainId]?: string } = {
   [ChainId.TEVMOS]:
     'https://dev.orbitmarket.io/subgraphs/name/orbital-apes-labs/v3-subgraph',
   [ChainId.EVMOS]:
-    'https://api.orbitmarket.io/subgraphs/name/forge-trade/v3-subgraph'
+    'https://subgraph.satsuma-prod.com/09c9cf3574cc/orbital-apes/v3-subgraph/api'
 };
 
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.
