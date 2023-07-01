@@ -571,6 +571,38 @@ export const WEVMOS_EVMOS = new Token(
   'Wrapped EVMOS'
 );
 
+export const STEVMOS_EVMOS = new Token(
+  ChainId.EVMOS,
+  '0x2C68D1d6aB986Ff4640b51e1F14C716a076E44C4',
+  18,
+  'stEVMOS',
+  'Stride Staked Evmos'
+);
+
+export const USDT_EVMOS = new Token(
+  ChainId.EVMOS,
+  '0xb72A7567847abA28A2819B855D7fE679D4f59846',
+  6,
+  'ceUSDT',
+  'Tether USD - Celer'
+);
+
+export const ETH_EVMOS = new Token(
+  ChainId.EVMOS,
+  '0x50dE24B3f0B3136C50FA8A3B8ebc8BD80a269ce5',
+  18,
+  'axlWETH',
+  'Wrapped Ether - Axelar'
+);
+
+export const STATOM_EVMOS = new Token(
+  ChainId.EVMOS,
+  '0xB5124FA2b2cF92B2D469b249433BA1c96BDF536D',
+  6,
+  'stATOM',
+  'Stride Staked Atom'
+);
+
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
