@@ -1,13 +1,13 @@
 {
   "name": "@orbitalapes/smart-order-router",
-  "version": "3.5.7",
+  "version": "3.5.8",
   "description": "Uniswap Smart Order Router",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Uniswap/smart-order-router.git"
+    "url": "git+https://github.com/Forge-Trade/smart-order-router.git"
   },
   "license": "GPL-3.0-or-later",
   "keywords": [],

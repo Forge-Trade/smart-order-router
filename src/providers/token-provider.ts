@@ -579,13 +579,6 @@ export const STEVMOS_EVMOS = new Token(
   'Stride Staked Evmos'
 );
 
-export const USDT_EVMOS = new Token(
-  ChainId.EVMOS,
-  '0xb72A7567847abA28A2819B855D7fE679D4f59846',
-  6,
-  'ceUSDT',
-  'Tether USD - Celer'
-);
 
 export const ETH_EVMOS = new Token(
   ChainId.EVMOS,
@@ -602,7 +595,21 @@ export const STATOM_EVMOS = new Token(
   'stATOM',
   'Stride Staked Atom'
 );
+export const USDC_NOBLE_EVMOS = new Token(
+  ChainId.EVMOS,
+  '0xf1faE9eC886C5F6E4ea13dA2456087Bd72F02cD1',
+  6,
+  'USDC',
+  'USDC - Noble'
+);
 
+export const USDT_EVMOS = new Token(
+  ChainId.EVMOS,
+  '0xB8f812B5943ab3BF941D5D4F1de90A4b326c5d8f',
+  6,
+  'USDT',
+  'USDT Kava'
+);
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
@@ -754,6 +761,8 @@ export const USDT_ON = (chainId: ChainId): Token => {
       return USDT_ARBITRUM;
     case ChainId.ARBITRUM_RINKEBY:
       return USDT_ARBITRUM_RINKEBY;
+    case ChainId.EVMOS:
+      return USDT_EVMOS;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }
@@ -794,7 +803,7 @@ export const USDC_ON = (chainId: ChainId): Token => {
     case ChainId.TEVMOS:
       return USDC_TEVMOS;
     case ChainId.EVMOS:
-      return USDC_EVMOS;
+      return USDC_NOBLE_EVMOS;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }

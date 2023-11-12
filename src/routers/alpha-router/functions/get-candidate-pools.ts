@@ -35,6 +35,7 @@ import {
   USDC_EVMOS,
   USDC_MAINNET,
   USDC_MOONBEAM,
+  USDC_NOBLE_EVMOS,
   USDC_OPTIMISM,
   USDC_OPTIMISTIC_KOVAN,
   USDC_POLYGON,
@@ -177,6 +178,7 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
   ],
   [ChainId.EVMOS]: [
     USDC_EVMOS,
+    USDC_NOBLE_EVMOS,
     USDT_EVMOS,
     ETH_EVMOS,
     STATOM_EVMOS,

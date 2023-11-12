@@ -184,5 +184,5 @@ export const WETH9: {
     18,
     'WETH',
     'Wrapped Ether'
-  ),
+  )
 };
